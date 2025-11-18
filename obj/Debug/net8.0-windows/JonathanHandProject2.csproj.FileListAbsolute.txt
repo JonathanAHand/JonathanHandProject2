@@ -1,0 +1,16 @@
+C:\Users\jhand1\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\JonathanHandProject2.exe
+C:\Users\jhand1\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\JonathanHandProject2.deps.json
+C:\Users\jhand1\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\JonathanHandProject2.runtimeconfig.json
+C:\Users\jhand1\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\JonathanHandProject2.dll
+C:\Users\jhand1\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\JonathanHandProject2.pdb
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Form1.resources
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.csproj.GenerateResource.cache
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.AssemblyInfoInputs.cache
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.AssemblyInfo.cs
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.csproj.CoreCompileInputs.cache
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.dll
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\refint\JonathanHandProject2.dll
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.pdb
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\JonathanHandProject2.genruntimeconfig.cache
+C:\Users\jhand1\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\ref\JonathanHandProject2.dll
