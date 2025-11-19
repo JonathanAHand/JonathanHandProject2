@@ -2,9 +2,9 @@
 {
     internal class InvalidWordAttempt : WordAttempt
     {
-        public string Reason { get; }
+        public InvalidReason Reason { get; }
 
-        public InvalidWordAttempt(string wordText, int submittedTime, string reason)
+        public InvalidWordAttempt(string wordText, int submittedTime, InvalidReason reason)
             : base(wordText, submittedTime)
         {
             Reason = reason;
