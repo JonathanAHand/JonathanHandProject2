@@ -152,7 +152,7 @@
             attemptsGrid.Location = new Point(186, 30);
             attemptsGrid.Name = "attemptsGrid";
             attemptsGrid.RowHeadersWidth = 51;
-            attemptsGrid.Size = new Size(429, 59);
+            attemptsGrid.Size = new Size(429, 108);
             attemptsGrid.TabIndex = 12;
             // 
             // WordCol

@@ -31,8 +31,7 @@ namespace JonathanHandProject2
             wordDictionary.LoadFromFile("dictionary.json");
 
             MessageBox.Show($"Dictionary loaded: {wordDictionary.Count} words");
-
-
+            
             wordValidator = new WordValidator(wordDictionary);
 
             letterBag = new LetterBag();
@@ -41,6 +40,8 @@ namespace JonathanHandProject2
             roundTimer = new System.Windows.Forms.Timer();
             roundTimer.Interval = 1000;
             roundTimer.Tick += RoundTimer_Tick;
+
+            HookLetterButtons();
         }
 
         private void StartNewRound()
@@ -51,6 +52,7 @@ namespace JonathanHandProject2
             currentRound = new GameRound(currentLetters, roundTimeLimit);
 
             DisplayLetters();
+            ResetLetterButtons();
             UpdateTimerLabel();
 
             attemptsGrid.Rows.Clear();
@@ -109,6 +111,7 @@ namespace JonathanHandProject2
             AddAttemptToGrid(attempt);
 
             wordInputTextBox.Text = "";
+            ResetLetterButtons();
         }
 
         private void AddAttemptToGrid(WordAttempt attempt)
@@ -123,14 +126,46 @@ namespace JonathanHandProject2
             }
         }
 
+        private void HookLetterButtons()
+        {
+            Button[] buttons =
+            {
+                letterButton1, letterButton2, letterButton3,
+                letterButton4, letterButton5, letterButton6,
+                letterButton7
+            };
+
+            foreach (Button btn in buttons)
+            {
+                btn.Click += (s, e) =>
+                {
+                    if (btn.Enabled)
+                    {
+                        wordInputTextBox.Text += btn.Text;
+                        btn.Enabled = false;
+                    }
+                };
+            }
+        }
+        
         private void EndRound()
         {
             gameHistory.AddRound(currentRound);
             MessageBox.Show($"Round Over!\nScore: {currentRound.GetRoundScore()}");
         }
 
-        // ===== Event Handlers (Designer will call these) =====
+        private void ResetLetterButtons()
+        {
+            Button[] buttons =
+            {
+                letterButton1, letterButton2, letterButton3,
+                letterButton4, letterButton5, letterButton6,
+                letterButton7
+            };
 
+            foreach (Button btn in buttons)
+                btn.Enabled = true;
+        }
         private void newGameButton_Click(object sender, EventArgs e)
         {
             StartNewRound();
