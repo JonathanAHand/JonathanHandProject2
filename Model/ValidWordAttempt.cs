@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JonathanHandProject2.Model
+﻿namespace JonathanHandProject2.Model
 {
     internal class ValidWordAttempt : WordAttempt
     {
+        public int Score { get; }
+
+        public ValidWordAttempt(string wordText, int submittedTime, int score)
+            : base(wordText, submittedTime)
+        {
+            Score = score;
+        }
     }
 }
