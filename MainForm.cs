@@ -89,9 +89,18 @@ namespace JonathanHandProject2
 
         private void TwistLetters()
         {
+            if (currentLetters == null || currentLetters.Length != 7)
+                return;
+
             letterBag.Shuffle(currentLetters);
+
             DisplayLetters();
+
+            ResetLetterButtons();
+
+            wordInputTextBox.Text = "";
         }
+
 
         private void SubmitWord()
         {
