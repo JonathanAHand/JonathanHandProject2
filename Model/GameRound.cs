@@ -2,16 +2,16 @@
 
 namespace JonathanHandProject2.Model
 {
-    internal class GameRound
+    public class GameRound
     {
         public char[] Letters { get; }
-        public int DurationSeconds { get; }
+        public int TimeLimit { get; }
         public List<WordAttempt> Attempts { get; }
 
-        public GameRound(char[] letters, int durationSeconds)
+        public GameRound(char[] letters, int timeLimit)
         {
             Letters = letters;
-            DurationSeconds = durationSeconds;
+            TimeLimit = timeLimit;
             Attempts = new List<WordAttempt>();
         }
 
@@ -26,9 +26,9 @@ namespace JonathanHandProject2.Model
 
             foreach (var attempt in Attempts)
             {
-                if (attempt is ValidWordAttempt valid)
+                if (attempt is ValidWordAttempt v)
                 {
-                    total += valid.Score;
+                    total += v.Score;
                 }
             }
 

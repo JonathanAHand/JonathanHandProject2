@@ -156,11 +156,21 @@ namespace JonathanHandProject2
                 };
             }
         }
-        
+
         private void EndRound()
         {
+            roundTimer.Stop();
+
+            // Store the round in history
             gameHistory.AddRound(currentRound);
-            MessageBox.Show($"Round Over!\nScore: {currentRound.GetRoundScore()}");
+
+            int score = currentRound.GetRoundScore();
+
+            MessageBox.Show($"Round Over!\nTotal Score: {score}");
+
+            // Reset UI
+            ResetLetterButtons();
+            wordInputTextBox.Text = "";
         }
 
         private void ResetLetterButtons()
