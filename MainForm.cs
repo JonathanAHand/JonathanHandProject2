@@ -100,8 +100,7 @@ namespace JonathanHandProject2
 
             wordInputTextBox.Text = "";
         }
-
-
+        
         private void SubmitWord()
         {
             if (currentRound == null)
