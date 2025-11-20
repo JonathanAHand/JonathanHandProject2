@@ -1,11 +1,11 @@
 ﻿namespace JonathanHandProject2.Model
 {
-    internal class InvalidWordAttempt : WordAttempt
+    public class InvalidWordAttempt : WordAttempt
     {
-        public InvalidReason Reason { get; }
+        public InvalidReason Reason { get; private set; }
 
-        public InvalidWordAttempt(string wordText, int submittedTime, InvalidReason reason)
-            : base(wordText, submittedTime)
+        public InvalidWordAttempt(string wordText, int timeEntered, InvalidReason reason)
+            : base(wordText, timeEntered)
         {
             Reason = reason;
         }

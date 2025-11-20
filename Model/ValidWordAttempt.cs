@@ -1,11 +1,11 @@
 ﻿namespace JonathanHandProject2.Model
 {
-    internal class ValidWordAttempt : WordAttempt
+    public class ValidWordAttempt : WordAttempt
     {
-        public int Score { get; }
+        public int Score { get; private set; }
 
-        public ValidWordAttempt(string wordText, int submittedTime, int score)
-            : base(wordText, submittedTime)
+        public ValidWordAttempt(string wordText, int timeEntered, int score)
+            : base(wordText, timeEntered)
         {
             Score = score;
         }

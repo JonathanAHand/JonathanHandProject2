@@ -1,6 +1,6 @@
 ﻿namespace JonathanHandProject2.Model
 {
-    internal enum InvalidReason
+    public enum InvalidReason
     {
         TooShort,
         NotInDictionary,

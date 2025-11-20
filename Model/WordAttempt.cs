@@ -1,14 +1,14 @@
 ﻿namespace JonathanHandProject2.Model
 {
-    internal abstract class WordAttempt
+    public abstract class WordAttempt
     {
-        public string WordText { get; }
-        public int SubmittedTime { get; }
+        public string WordText { get; protected set; }
+        public int TimeEntered { get; protected set; }
 
-        protected WordAttempt(string wordText, int submittedTime)
+        protected WordAttempt(string wordText, int timeEntered)
         {
             WordText = wordText;
-            SubmittedTime = submittedTime;
+            TimeEntered = timeEntered;
         }
     }
 }
