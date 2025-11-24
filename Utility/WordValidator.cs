@@ -54,6 +54,11 @@ namespace JonathanHandProject2.Utility
             int submittedTime,
             List<WordAttempt> priorAttempts)
         {
+            if (availableLetters == null)
+            {
+                return new InvalidWordAttempt(rawWord ?? "", submittedTime, InvalidReason.LettersNotAvailable);
+            }
+
             string word = Normalize(rawWord);
 
             if (word.Length < 3)

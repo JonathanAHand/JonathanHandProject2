@@ -2,7 +2,7 @@
 
 namespace JonathanHandProject2.Model
 {
-    internal class GameHistory
+    public class GameHistory
     {
         public List<GameRound> Rounds { get; }
 

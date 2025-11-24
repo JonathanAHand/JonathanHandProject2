@@ -1,12 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
+using JonathanHandProject2.Model;
 
 namespace JonathanHandProject2.Persistence
 {
-    internal class JsonHighScorePersistenceManager : HighScorePersistenceManager
+    public class JsonHighScorePersistenceManager
     {
+        public List<HighScoreEntry> Load(string filePath)
+        {
+            if (!File.Exists(filePath))
+                return new List<HighScoreEntry>();
+
+            try
+            {
+                string json = File.ReadAllText(filePath);
+
+                return JsonSerializer.Deserialize<List<HighScoreEntry>>(json)
+                       ?? new List<HighScoreEntry>();
+            }
+            catch
+            {
+                return new List<HighScoreEntry>();
+            }
+        }
+
+        public void Save(List<HighScoreEntry> entries, string filePath)
+        {
+            try
+            {
+                string json = JsonSerializer.Serialize(entries, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+
+                File.WriteAllText(filePath, json);
+            }
+            catch
+            {
+                // Ignore save errors for now
+            }
+        }
     }
 }

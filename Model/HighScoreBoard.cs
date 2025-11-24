@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using JonathanHandProject2.Persistence;
 
 namespace JonathanHandProject2.Model
 {
@@ -30,6 +29,24 @@ namespace JonathanHandProject2.Model
                 .OrderBy(e => e.TimeSeconds)
                 .ThenByDescending(e => e.Score)
                 .ToList();
+        }
+
+        public void LoadFromFile(string filePath)
+        {
+            var manager = new JsonHighScorePersistenceManager();
+            var loaded = manager.Load(filePath);
+
+            if (loaded != null)
+            {
+                Entries.Clear();
+                Entries.AddRange(loaded);
+            }
+        }
+
+        public void SaveToFile(string filePath)
+        {
+            var manager = new JsonHighScorePersistenceManager();
+            manager.Save(Entries, filePath);
         }
 
         public void ClearAll()

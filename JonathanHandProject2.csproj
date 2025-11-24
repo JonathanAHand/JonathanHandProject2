@@ -1,21 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+		<EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="dictionary.json" />
-  </ItemGroup>
+	<!-- Dictionary file settings -->
+	<ItemGroup>
+		<None Remove="dictionary.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="dictionary.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="dictionary.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>

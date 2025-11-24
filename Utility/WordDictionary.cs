@@ -13,11 +13,18 @@ namespace JonathanHandProject2.Utility
         public int Count => dictionaryWords.Count;
 
 
+        /// <summary>
+        /// Internal helper model used only for deserializing dictionary.json.
+        /// The JSON file contains an array of objects:
+        /// { "letter": "a", "words": [...] }
+        /// This class matches that structure.
+        /// </summary>
         private class Entry
         {
             public string? letter { get; set; }
             public List<string>? words { get; set; }
         }
+
 
         public void LoadFromFile(string filePath)
         {
@@ -26,10 +33,8 @@ namespace JonathanHandProject2.Utility
 
             string jsonText = File.ReadAllText(filePath);
 
-            // Deserialize the entire dictionary.json into Entry objects
             List<Entry>? entries = JsonSerializer.Deserialize<List<Entry>>(jsonText);
 
-            // Flatten all word lists into a single set
             dictionaryWords = entries?
                                   .Where(e => e.words != null)
                                   .SelectMany(e => e.words!)

@@ -1,6 +1,3 @@
-using System;
-using System.Windows.Forms;
-
 namespace JonathanHandProject2
 {
     internal static class Program
