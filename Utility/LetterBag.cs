@@ -1,13 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace JonathanHandProject2.Utility
+﻿namespace JonathanHandProject2.Utility
 {
+    /// <summary>
+    /// Represents the collection of letters available for generating
+    /// random 7-letter sets for each game round. This class models a
+    /// “Scrabble-like” bag of letters with weighted character frequency.
+    ///
+    /// Responsibilities:
+    ///  - Store a weighted list of letters
+    ///  - Provide a random selection of 7 letters
+    ///  - Shuffle the current letters (for the Twist button)
+    ///
+    /// The LetterBag never removes letters from the bag; each round is
+    /// independent and letters do not get consumed. This keeps gameplay
+    /// consistent and simple.
+    /// </summary>
     internal class LetterBag
     {
         private List<char> bag;
         private Random random;
 
+        /// <summary>
+        /// Initializes the bag with a weighted distribution of
+        /// English letters similar to Scrabble frequencies.
+        /// </summary>
         public LetterBag()
         {
             random = new Random();
@@ -41,14 +56,20 @@ namespace JonathanHandProject2.Utility
             AddLetters('z', 1);
         }
 
+        /// <summary>
+        /// Adds a specific number of the given letter into the bag.
+        /// </summary>
         private void AddLetters(char letter, int count)
         {
             for (int i = 0; i < count; i++)
-            {
                 bag.Add(letter);
-            }
         }
 
+        /// <summary>
+        /// Randomly selects seven letters from the bag. Letters are chosen
+        /// with replacement — meaning the bag is not depleted — ensuring
+        /// consistency across rounds.
+        /// </summary>
         public char[] GetSevenRandomLetters()
         {
             char[] letters = new char[7];
@@ -62,6 +83,10 @@ namespace JonathanHandProject2.Utility
             return letters;
         }
 
+        /// <summary>
+        /// Shuffles an existing array of letters in place using the
+        /// Fisher–Yates shuffle algorithm. Used by the “Twist” button.
+        /// </summary>
         public void Shuffle(char[] letters)
         {
             for (int i = letters.Length - 1; i > 0; i--)
