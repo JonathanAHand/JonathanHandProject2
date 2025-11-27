@@ -1,0 +1,2 @@
+Extra Credit Feature Attempted:
+I implemented the "Continue Session" feature, which loads a previous session’s stats.

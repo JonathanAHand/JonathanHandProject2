@@ -90,6 +90,9 @@ namespace JonathanHandProject2
         {
             InitializeComponent();
 
+            this.AcceptButton = submitButton;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             // -------------------------------
             // Configure Timer Menu
             // -------------------------------
@@ -119,6 +122,12 @@ namespace JonathanHandProject2
                 menuGameTime
             });
 
+            var menuContinueSession = new ToolStripMenuItem();
+            menuContinueSession.Text = "Continue Session";
+            menuContinueSession.Click += menuContinueSession_Click;
+
+            gameToolStripMenuItem.DropDownItems.Insert(0, menuContinueSession);
+
             // -------------------------------
             // Window Configuration
             // -------------------------------
@@ -142,7 +151,7 @@ namespace JonathanHandProject2
             // -------------------------------
             wordDictionary = new WordDictionary();
             wordDictionary.LoadFromFile("dictionary.json");
-            MessageBox.Show($"Dictionary loaded: {wordDictionary.Count} words");
+            //MessageBox.Show($"Dictionary loaded: {wordDictionary.Count} words");
 
             // -------------------------------
             // Create Validator and Utility Systems
@@ -544,5 +553,60 @@ namespace JonathanHandProject2
         private void MainForm_Load(object sender, EventArgs e)
         {
         }
+
+        /// <summary>
+        /// Allows the user to continue from a previously exported stats file.
+        /// Loads GameHistory and restores the last used time limit.
+        /// </summary>
+        private void menuContinueSession_Click(object? sender, EventArgs e)
+        {
+            using OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Title = "Select Previously Exported Stats File";
+            openDialog.Filter = "JSON File|*.json|All Files|*.*";
+
+            if (openDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            var (loadedHistory, restoredTime) =
+                StatsImportUtility.Import(openDialog.FileName, currentPlayerName);
+
+            if (loadedHistory == null || restoredTime == null)
+            {
+                MessageBox.Show(
+                    "Unable to load previous stats. Starting a new session with the default 60-second timer.",
+                    "Continue Session",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                gameHistory = new GameHistory();
+                roundTimer.Stop();
+                currentRound = null;
+
+                SetTimerDuration(60);
+
+                attemptsGrid.Rows.Clear();
+                invalidListBox.Items.Clear();
+                return;
+            }
+
+            gameHistory = loadedHistory;
+            currentRound = null;
+
+            SetTimerDuration(restoredTime.Value);
+
+            attemptsGrid.Rows.Clear();
+            invalidListBox.Items.Clear();
+
+            MessageBox.Show(
+                $"Session continued. Timer restored to {restoredTime.Value} seconds.",
+                "Continue Session",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
+
+
+
     }
 }
